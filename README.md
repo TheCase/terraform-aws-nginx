@@ -9,13 +9,19 @@ Assumptions:
 export VAULT_ADDR="http://x.x.x.x:8200"
 ```
 
-create keys, script will add them to vault:
+1) Initialize Terraform
+
+```
+terraform init
+```
+
+2) create keys, script will add them to vault:
 
 ```
 sh create-keys.sh
 ```
 
-run
+3) Apply
 
 ```
 terraform apply 
