@@ -1,11 +1,3 @@
-provider "vault" {
-  address = "http://vault.service.consul:8200"
-  # token is in ~/.vault-token
-}
-
-data "vault_generic_secret" "aws" {
-  path = "secret/aws"
-}
 
 # ~/.aws/credentials and ~/.aws/config file reads
 provider "aws" { 
@@ -14,7 +6,7 @@ provider "aws" {
 
 resource "aws_key_pair" "auth" {
   key_name   = "terraform-aws"
-  public_key = "${data.vault_generic_secret.aws.data.public}"
+  public_key = "${file("terraform-aws.pub")}"
 }
 
 # Create a VPC to launch our instances into
@@ -114,7 +106,7 @@ resource "aws_elb" "web" {
 resource "aws_instance" "web" {
   connection {
     user = "ubuntu"
-    private_key = "${data.vault_generic_secret.aws.data.private}"
+    private_key = "${file("terraform-aws")}"
   }
   instance_type = "t2.micro"
   ami = "${lookup(var.aws_amis, var.aws_region)}"
