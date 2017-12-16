@@ -1,3 +1,6 @@
+*** There is a version that does not have a Vault requirement in the [*non_vault* branch](https://github.com/TheCase/terraform-aws-nginx/tree/non_vault)
+
+
 Assumptions:
 
 - AWS creds in ~/.aws/credentials
