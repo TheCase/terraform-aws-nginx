@@ -1,13 +1,6 @@
 Assumptions:
 
 - AWS creds in ~/.aws/credentials
-- Vault token in ~/.vault_token
-- VAULT_ADDR environment variable is set: 
-
-
-```
-export VAULT_ADDR="http://x.x.x.x:8200"
-```
 
 1) Initialize Terraform
 
@@ -15,7 +8,7 @@ export VAULT_ADDR="http://x.x.x.x:8200"
 terraform init
 ```
 
-2) create keys, script will add them to vault:
+2) create keys:
 
 ```
 sh create-keys.sh
